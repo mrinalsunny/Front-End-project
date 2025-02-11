@@ -1,39 +1,14 @@
 .navbar-brand {
-    width: 100px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 100px;
+    height: auto;
 }
-
-/* .navbar-container {
-    height: 50px;
-} */
 
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
 }
 
-/* .hero-background {
-    background-image: url("./images/hero-background2.jpg");
-    background-size: cover;
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
-    width: 100%;
-    height: 90vh; Slightly less than 100% height
-    padding-left: 12px;
-    padding-right: 12px;
-} */
-
-/* .hero {
-    display: flex;
-    justify-content: center; Optional: Adjusts spacing between articles
-} */
-
-/* .hero article {
-    flex: 1; Ensures both articles take equal space
-    margin: 10px; Optional: Adds some space around each article
-} */
-
 .jumbotron {
-background-image: url("./images/hero-background2.jpg");
+background-image: url("./images/hero-background1.jpg");
     background-size: cover;
     color: white;
     text-shadow: 2px 2px 4px #000000;
@@ -44,23 +19,19 @@ background-image: url("./images/hero-background2.jpg");
     justify-items: center;
 }
 
-.country {
-    display: inline-block;
-    font-weight: bold;
-    color: red;
-    animation: changeCountry 1s infinite steps(5);
+#country:after {
+    content: "";
+    animation-name: rotate-country-name;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
 }
 
-@keyframes changeCountry {
-    0% { content: "Italy"; }
-    20% { content: "France"; }
-    40% { content: "Japan"; }
-    60% { content: "Australia"; }
-    80% { content: "Brazil"; }
-    100% { content: "Canada"; }
+@keyframes rotate-country-name {
+    0% { content: "United States"; }
+    20% { content: "India"; }
+    40% { content: "France"; }
+    60% { content: "Germany"; }
+    80% { content: "Italy"; }
+    100% { content: "Russia"; }
 }
 
-.country::after {
-    content: "Italy";
-    animation: changeCountry 1s infinite steps(5);
-}
