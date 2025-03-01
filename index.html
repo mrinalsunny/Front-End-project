@@ -12,11 +12,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Darumadrop+One&family=Grechen+Fuemen&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-    <header>
+    <header class="">
         <nav class="navbar navbar-expand-lg z-3">
             <div class="container">
 
@@ -74,7 +75,7 @@
 
     <main>
         <!-- Hero -->
-        <section>
+        <section class="mb-5">
             <article>
                 <div class="jumbotron">
                     <h1 class="display-7 hero-brand-welcome">Welcome to
@@ -91,6 +92,360 @@
                 </div>
             </article>
         </section>
+
+        <br><br>
+
+        <!-- check-point 2 -->
+         <!-- -->
+        <section>
+            <div class="container">
+                <div class="container-fluid">
+                    <h1 class="display-4 text-center invisible">Planning your next trip?</h1>
+                    <br>
+                    <div class="row shadow-lg">
+                        <div class="col-md-6 px-0 align-content-center">
+                            <img src="./images/brand-image.jpg" class="w-100 h-100" alt="brand-image">
+                        </div>
+                        <div class="col-md-6 align-content-center p-4">
+                            <h1 class="text-center">Planning your next trip?</h1>
+                            <br>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="where" class="form-label">Destination</label>
+                                    <select class="form-select" id="where">
+                                        <option selected>Select</option>
+                                        <option value="1">United States</option>
+                                        <option value="2">France</option>
+                                        <option value="3">India</option>
+                                        <option value="4">Germany</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="how-many" class="form-label">Number of Travelers</label>
+                                    <input type="number" class="form-control" id="how-many" placeholder="Enter number">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="start-date" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" id="start-date">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="end-date" class="form-label">End Date</label>
+                                    <input type="date" class="form-control" id="end-date">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Additional Notes</label>
+                                    <textarea class="form-control" id="description" rows="3" minlength="50" maxlength="500"
+                                        placeholder="Enter description"></textarea>
+                                </div>
+
+                                <div class="mb-3 text-center">
+                                    <button type="button" class="btn btn-primary" onclick="validateAndBook()">Book Now</button>
+                                </div>
+                                <script>
+                                    function validateAndBook() {
+                                        const whereTo = document.querySelector('select').value;
+                                        const howMany = document.getElementById('how-many').value;
+                                        const startDate = document.getElementById('start-date').value;
+                                        const endDate = document.getElementById('end-date').value;
+                                        const description = document.getElementById('description').value;
+
+                                        const today = new Date().toISOString().split('T')[0];
+
+                                        if (whereTo !== "Select" && howMany > 0 && startDate && endDate && description.length >= 50) {
+                                            if (startDate > today && startDate < endDate) {
+                                                alert("Booking Successful");
+                                            } else {
+                                                alert("Start date must be a future date and less than end date.");
+                                            }
+                                        } else {
+                                            alert("Please fill out all fields correctly.");
+                                        }
+                                    }
+                                </script>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br><br><br><br>
+        
+        <section>
+            <div class="container">
+                <div class="container-fluid">
+                    <h1 class="display-4 text-center">Packages</h1>
+                    <br>
+                    <div class="row g-4">
+        
+                        <div class="col-md-4">
+                            <div card class="card h-md-5 shadow">
+                                <img src="./images/packages/usa.jpg" class="card-img-top" alt="...">
+                                <div class="card-body text-center rating-5">
+                                    <h5 class="card-title">USA</h5>
+                                    <p class="card-text">From NYC’s skyline to the Grand Canyon’s beauty, explore iconic cities, stunning national parks, and vibrant culture across 50 unique states.
+                                    </p>
+                                    <div>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <h6>$2500</h6>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                </div>
+                        
+                            </div>
+                        </div>
+        
+                        <div class="col-md-4">
+                            <div card class="card shadow">
+                                <img src="./images/packages/egypt.jpg" class="card-img-top" alt="...">
+                                <div class="card-body text-center rating-4">
+                                    <h5 class="card-title">Egypt</h5>
+                                    <p class="card-text">Discover the pyramids, cruise the Nile, or relax by the Red Sea. Egypt’s rich history, ancient temples, and vibrant markets await your adventure.
+                                    </p>
+                                    <div>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                    </div>
+                                    <h6>$1800</h6>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                </div>
+                        
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div card class="card shadow">
+                                <img src="./images/packages/france.jpg" class="card-img-top" alt="...">
+                                <div class="card-body text-center rating-5">
+                                    <h5 class="card-title">France</h5>
+                                    <p class="card-text">Stroll through Paris, savor fine wine, and visit castles. France offers romance, art, scenic landscapes, and unforgettable culinary delights.
+                                    </p>
+                                    <div>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <h6>$2200</h5>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                </div>
+                        
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div card class="card shadow">
+                                <img src="./images/packages/germany.jpg" class="card-img-top" alt="...">
+                                <div class="card-body text-center rating-5">
+                                    <h5 class="card-title">Germany</h5>
+                                    <p class="card-text">Experience medieval castles, modern cities, and lively festivals. From Berlin’s history to Bavaria’s beauty, Germany is full of surprises.
+                                    </p>
+                                    <div>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <h6>$2000</h5>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                </div>
+                        
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div card class="card shadow">
+                                <img src="./images/packages/india.jpg" class="card-img-top" alt="...">
+                                <div class="card-body text-center rating-5">
+                                    <h5 class="card-title">India</h5>
+                                    <p class="card-text">A land of colors, spices, and heritage. Visit the Taj Mahal, explore bustling markets, and witness the beauty of nature and sacred traditions.
+                                    </p>
+                                    <div>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                    </div>
+                                    <h6>$1500</h5>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                </div>
+                        
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div card class="card shadow">
+                                <img src="./images/packages/japan.jpg" class="card-img-top" alt="...">
+                                <div class="card-body text-center rating-5">
+                                    <h5 class="card-title">Japan</h5>
+                                    <p class="card-text">From cherry blossoms to neon-lit streets, Japan blends tradition with innovation. Discover ancient temples, sushi delights, and stunning scenery.
+                                    </p>
+                                    <div>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <h6>$2800</h5>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                </div>
+                        
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div card class="card shadow">
+                                <img src="./images/packages/russia.jpg" class="card-img-top" alt="...">
+                                <div class="card-body text-center rating-5">
+                                    <h5 class="card-title">Russia</h5>
+                                    <p class="card-text">Explore Moscow’s grandeur, St. Petersburg’s charm, and Siberia’s vast beauty. Russia’s rich history and landscapes create an unforgettable trip.
+                                    </p>
+                                    <div>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                    </div>
+                                    <h6>$1900</h5>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                </div>
+                        
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div card class="card shadow">
+                                <img src="./images/packages/thailand.jpg" class="card-img-top" alt="...">
+                                <div class="card-body text-center rating-5">
+                                    <h5 class="card-title">Thailand</h5>
+                                    <p class="card-text">Golden beaches, lush jungles, and floating markets make Thailand a paradise. Enjoy vibrant nightlife, flavorful cuisine, and scenic temples.
+                                    </p>
+                                    <div>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                    </div>
+                                    <h6>$1200</h5>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                </div>
+                        
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div card class="card shadow">
+                                <img src="./images/packages/turkey.jpg" class="card-img-top" alt="...">
+                                <div class="card-body text-center rating-5">
+                                    <h5 class="card-title">Turkey</h5>
+                                    <p class="card-text">From Istanbul’s rich culture to Cappadocia’s surreal landscapes, Turkey offers historical wonders, stunning beaches, and delicious cuisine.
+                                    </p>
+                                    <div>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                    </div>
+                                    <h6>$1700</h5>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+        </section>
+
+        <br><br><br><br>
+
+        <section>
+            <div class="container">
+                <div class="container-fluid w-75 mx-auto">
+                    <h1 class="display-4 text-center">Services</h1>
+                    <br>
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="4000">
+                                <img src="./images/services/slide-1.jpg" class="d-block w-75 mx-auto" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h1 class="text-border fs-1">Affordable Hotel</h1>
+                                    <p class="text-border fs-6">Find and book budget-friendly accommodations without compromising on comfort. We offer a wide range of hotels, resorts, and homestays to suit every traveler’s needs.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="./images/services/slide-2.jpg" class="d-block w-75 mx-auto" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h1 class="text-border fs-1">Food and Drinks</h1>
+                                    <p class="text-border fs-6">Discover the best local restaurants, street food, and fine dining experiences. We also provide recommendations for dietary preferences and special cuisines.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="./images/services/slide-3.jpg" class="d-block w-75 mx-auto" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h1 class="text-border fs-1">Safety Guide</h1>
+                                    <p class="text-border fs-6">Travel worry-free with our comprehensive safety guides. Get essential travel tips, emergency contacts, and local regulations to ensure a secure journey.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="./images/services/slide-4.jpg" class="d-block w-75 mx-auto" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h1 class="text-border fs-1">Adventure Activities</h1>
+                                    <p class="text-border fs-6">Make your trip thrilling by booking exciting experiences like scuba diving, trekking, bungee jumping, and safaris. Enjoy curated adventure packages for all levels of enthusiasts.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="./images/services/slide-5.jpg" class="d-block w-75 mx-auto" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h1 class="text-border fs-1">Local Transportation</h1>
+                                    <p class="text-border fs-6">Navigate your destination easily with our transport solutions. From car rentals and airport transfers to public transport guides, we ensure a seamless travel experience.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="./images/services/slide-6.jpg" class="d-block w-75 mx-auto" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h1 class="text-border fs-1">Custom Travel Itineraries</h1>
+                                    <p class="text-border fs-6">Plan your perfect trip with personalized itineraries. Whether you seek cultural experiences, sightseeing, or hidden gems, we design schedules that match your interests and budget.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br><br><br><br>
 
     </main>
     <footer>
