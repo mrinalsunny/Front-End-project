@@ -13,12 +13,15 @@
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Darumadrop+One&family=Grechen+Fuemen&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+
     <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
     <header class="">
-        <nav class="navbar navbar-expand-lg z-3">
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
 
                 <a class="navbar-brand" href="#">
@@ -64,8 +67,147 @@
                     </ul>
 
                     <div>
-                        <button type="button" class="btn btn-outline-primary">Login</button>
-                        <button type="button" class="btn btn-outline-secondary">Register</button>
+                        <!-- Register Button -->
+                        <button type="button" class="btn btn-outline-secondary text" data-bs-toggle="modal"
+                            data-bs-target="#RegisterModal">Register</button>
+
+                        <!-- Register Modal -->
+                        <div class="modal fade" id="RegisterModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- modal header -->
+                                    <div class="modal-header pb-0 border-0">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- modal body -->
+                                    <div class="modal-body pt-0 px-5">
+
+                                        <div class="text-center pb-3">
+                                            <img src="./images/brand-logo3.png" class="img-fluid w-25" alt="brand-logo">
+                                        </div>
+
+                                        <h1 class="modal-title fs-3 text-primary text-center mb-4" id="exampleModalLabel">Please Register</h1>
+
+                                        <form id="registerForm" onsubmit="return validateRegisterForm()">
+                                            <!-- Fullname -->
+                                            <div class="form-floating mb-1">
+                                                <input type="text" class="form-control" id="fullname"
+                                                    placeholder="Fullname">
+                                                <label for="fullname">Fullname</label>
+                                            </div>
+
+                                            <!-- Contact -->
+                                            <div class="form-floating mb-1">
+                                                <input type="tel" class="form-control" id="contact"
+                                                    placeholder="Contact">
+                                                <label for="contact">Contact</label>
+                                            </div>
+
+                                            <!-- Date of Birth -->
+                                            <div class="form-floating mb-1">
+                                                <input type="text" class="form-control" id="dob" placeholder="D.O.B." onfocus="(this.type='date')" onblur="(this.type='text')">
+                                                <label for="dob">Date of Birth</label>
+                                            </div>                                            
+
+                                            <!-- Email -->
+                                            <div class="form-floating mb-1">
+                                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                                <label for="email">Email</label>
+                                            </div>
+
+                                            <!-- Password -->
+                                            <div class="form-floating mb-1">
+                                                <input type="password" class="form-control" id="password"
+                                                    placeholder="Password">
+                                                <label for="password">Password</label>
+                                            </div>
+
+                                            <!-- Gender -->
+                                            <div class="form-floating mb-1">
+                                                <select class="form-select" id="gender">
+                                                    <option selected disabled>Select Gender</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                                <label for="gender">Gender</label>
+                                            </div>     
+                                            <div class="text-center mt-5">
+                                                <button type="submit" class="btn btn-primary w-100">Register</button>
+                                            </div>                                   
+                                        </form>
+                                        <div class="text-center mt-3">
+                                            <span class="me-1">Already have an account?</span>
+                                            <a href="#" class="p-0" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="modal-footer border-0">
+                                        <button type="button" class="btn btn-link" data-bs-toggle="modal"
+                                            data-bs-target="#loginModal">Login</button>
+                                        <button type="button" class="btn btn-primary">Register</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Login Button -->
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">Login</button>
+                        
+                        <!-- Login Modal -->
+                        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- modal header -->
+                                    <div class="modal-header pb-0 border-0">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- modal body -->
+                                    <div class="modal-body pt-0 px-5">
+                                        
+                                        <div class="text-center pb-3">
+                                            <img src="./images/brand-logo3.png" class="img-fluid w-25" alt="brand-logo">
+                                        </div>
+
+                                        <h1 class="modal-title fs-3 text-primary text-center mb-4" id="exampleModalLabel">Please Login</h1>
+
+                                        
+                                        <form id="loginForm" onsubmit="return validateLoginForm()">
+                                            <!-- Email -->
+                                            <div class="form-floating mb-1">
+                                                <input type="email" class="form-control" id="loginEmail" placeholder="Email">
+                                                <label for="loginEmail">Email</label>
+                                            </div>
+                                        
+                                            <!-- Password -->
+                                            <div class="form-floating mb-1">
+                                                <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                                                <label for="loginPassword">Password</label>
+                                            </div>
+                                        
+                                            <div class="text-center mt-5">
+                                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                                            </div>
+                                        </form>
+                                        <div class="text-center mt-3">
+                                            <span class="me-1">Don't have an account?</span>
+                                            <a href="#" class="p-0" data-bs-toggle="modal" data-bs-target="#RegisterModal">Register</a>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="modal-footer">
+                                        <button type="button" class="btn btn-link" data-bs-toggle="modal"
+                                            data-bs-target="#Register">Register</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,17 +233,20 @@
                     </p>
                 </div>
             </article>
+            <!-- <div class="container text-center fw-bold fs-1 text-warning mt-4">
+                <i class="bi bi-chevron-double-down"></i>
+            </div> -->
         </section>
 
-        <br><br>
+        <br><br><br>
+        <!-- <section class="container text-center fw-bold fs-1"><i class="bi bi-chevron-double-down"></i></section> -->
 
         <!-- check-point 2 -->
-         <!-- -->
+        <!-- -->
         <section>
             <div class="container">
                 <div class="container-fluid">
-                    <h1 class="display-4 text-center invisible">Planning your next trip?</h1>
-                    <br>
+                    <!-- <h1 class="display-4 text-center invisible">Planning your next trip?</h1> -->
                     <div class="row shadow-lg">
                         <div class="col-md-6 px-0 align-content-center">
                             <img src="./images/brand-image.jpg" class="w-100 h-100" alt="brand-image">
@@ -137,34 +282,18 @@
 
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Additional Notes</label>
-                                    <textarea class="form-control" id="description" rows="3" minlength="50" maxlength="500"
-                                        placeholder="Enter description"></textarea>
+                                    <div class="textarea-wrapper">
+                                        <textarea class="form-control" id="description" rows="3" minlength="50"
+                                            maxlength="500" placeholder="Enter details"
+                                            oninput="updateCharCount()"></textarea>
+                                        <div id="charCount" class="char-count">0/500</div>
+                                    </div>
                                 </div>
 
                                 <div class="mb-3 text-center">
-                                    <button type="button" class="btn btn-primary" onclick="validateAndBook()">Book Now</button>
+                                    <button type="button" class="btn btn-primary" onclick="validateAndBook()">Book
+                                        Now</button>
                                 </div>
-                                <script>
-                                    function validateAndBook() {
-                                        const whereTo = document.querySelector('select').value;
-                                        const howMany = document.getElementById('how-many').value;
-                                        const startDate = document.getElementById('start-date').value;
-                                        const endDate = document.getElementById('end-date').value;
-                                        const description = document.getElementById('description').value;
-
-                                        const today = new Date().toISOString().split('T')[0];
-
-                                        if (whereTo !== "Select" && howMany > 0 && startDate && endDate && description.length >= 50) {
-                                            if (startDate > today && startDate < endDate) {
-                                                alert("Booking Successful");
-                                            } else {
-                                                alert("Start date must be a future date and less than end date.");
-                                            }
-                                        } else {
-                                            alert("Please fill out all fields correctly.");
-                                        }
-                                    }
-                                </script>
                             </form>
                         </div>
                     </div>
@@ -173,20 +302,21 @@
         </section>
 
         <br><br><br><br>
-        
+
         <section>
             <div class="container">
                 <div class="container-fluid">
                     <h1 class="display-4 text-center">Packages</h1>
                     <br>
                     <div class="row g-4">
-        
+
                         <div class="col-md-4">
                             <div card class="card h-md-5 shadow">
                                 <img src="./images/packages/usa.jpg" class="card-img-top" alt="...">
                                 <div class="card-body text-center rating-5">
                                     <h5 class="card-title">USA</h5>
-                                    <p class="card-text">From NYC’s skyline to the Grand Canyon’s beauty, explore iconic cities, stunning national parks, and vibrant culture across 50 unique states.
+                                    <p class="card-text">From NYC’s skyline to the Grand Canyon’s beauty, explore iconic
+                                        cities, stunning national parks, and vibrant culture across 50 unique states.
                                     </p>
                                     <div>
                                         <i class="bi bi-star-fill"></i>
@@ -196,18 +326,20 @@
                                         <i class="bi bi-star-fill"></i>
                                     </div>
                                     <h6>$2500</h6>
-                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                    <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
-                        
+
                             </div>
                         </div>
-        
+
                         <div class="col-md-4">
                             <div card class="card shadow">
                                 <img src="./images/packages/egypt.jpg" class="card-img-top" alt="...">
                                 <div class="card-body text-center rating-4">
                                     <h5 class="card-title">Egypt</h5>
-                                    <p class="card-text">Discover the pyramids, cruise the Nile, or relax by the Red Sea. Egypt’s rich history, ancient temples, and vibrant markets await your adventure.
+                                    <p class="card-text">Discover the pyramids, cruise the Nile, or relax by the Red
+                                        Sea. Egypt’s rich history, ancient temples, and vibrant markets await your
+                                        adventure.
                                     </p>
                                     <div>
                                         <i class="bi bi-star-fill"></i>
@@ -217,9 +349,9 @@
                                         <i class="bi bi-star"></i>
                                     </div>
                                     <h6>$1800</h6>
-                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                    <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
-                        
+
                             </div>
                         </div>
 
@@ -228,7 +360,9 @@
                                 <img src="./images/packages/france.jpg" class="card-img-top" alt="...">
                                 <div class="card-body text-center rating-5">
                                     <h5 class="card-title">France</h5>
-                                    <p class="card-text">Stroll through Paris, savor fine wine, and visit castles. France offers romance, art, scenic landscapes, and unforgettable culinary delights.
+                                    <p class="card-text">Stroll through Paris, savor fine wine, and visit castles.
+                                        France offers romance, art, scenic landscapes, and unforgettable culinary
+                                        delights.
                                     </p>
                                     <div>
                                         <i class="bi bi-star-fill"></i>
@@ -240,7 +374,7 @@
                                     <h6>$2200</h5>
                                         <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
-                        
+
                             </div>
                         </div>
 
@@ -249,7 +383,9 @@
                                 <img src="./images/packages/germany.jpg" class="card-img-top" alt="...">
                                 <div class="card-body text-center rating-5">
                                     <h5 class="card-title">Germany</h5>
-                                    <p class="card-text">Experience medieval castles, modern cities, and lively festivals. From Berlin’s history to Bavaria’s beauty, Germany is full of surprises.
+                                    <p class="card-text">Experience medieval castles, modern cities, and lively
+                                        festivals. From Berlin’s history to Bavaria’s beauty, Germany is full of
+                                        surprises.
                                     </p>
                                     <div>
                                         <i class="bi bi-star-fill"></i>
@@ -261,7 +397,7 @@
                                     <h6>$2000</h5>
                                         <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
-                        
+
                             </div>
                         </div>
 
@@ -270,7 +406,9 @@
                                 <img src="./images/packages/india.jpg" class="card-img-top" alt="...">
                                 <div class="card-body text-center rating-5">
                                     <h5 class="card-title">India</h5>
-                                    <p class="card-text">A land of colors, spices, and heritage. Visit the Taj Mahal, explore bustling markets, and witness the beauty of nature and sacred traditions.
+                                    <p class="card-text">A land of colors, spices, and heritage. Visit the Taj Mahal,
+                                        explore bustling markets, and witness the beauty of nature and sacred
+                                        traditions.
                                     </p>
                                     <div>
                                         <i class="bi bi-star-fill"></i>
@@ -282,7 +420,7 @@
                                     <h6>$1500</h5>
                                         <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
-                        
+
                             </div>
                         </div>
 
@@ -291,7 +429,9 @@
                                 <img src="./images/packages/japan.jpg" class="card-img-top" alt="...">
                                 <div class="card-body text-center rating-5">
                                     <h5 class="card-title">Japan</h5>
-                                    <p class="card-text">From cherry blossoms to neon-lit streets, Japan blends tradition with innovation. Discover ancient temples, sushi delights, and stunning scenery.
+                                    <p class="card-text">From cherry blossoms to neon-lit streets, Japan blends
+                                        tradition with innovation. Discover ancient temples, sushi delights, and
+                                        stunning scenery.
                                     </p>
                                     <div>
                                         <i class="bi bi-star-fill"></i>
@@ -303,7 +443,7 @@
                                     <h6>$2800</h5>
                                         <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
-                        
+
                             </div>
                         </div>
 
@@ -312,7 +452,9 @@
                                 <img src="./images/packages/russia.jpg" class="card-img-top" alt="...">
                                 <div class="card-body text-center rating-5">
                                     <h5 class="card-title">Russia</h5>
-                                    <p class="card-text">Explore Moscow’s grandeur, St. Petersburg’s charm, and Siberia’s vast beauty. Russia’s rich history and landscapes create an unforgettable trip.
+                                    <p class="card-text">Explore Moscow’s grandeur, St. Petersburg’s charm, and
+                                        Siberia’s vast beauty. Russia’s rich history and landscapes create an
+                                        unforgettable trip.
                                     </p>
                                     <div>
                                         <i class="bi bi-star-fill"></i>
@@ -324,7 +466,7 @@
                                     <h6>$1900</h5>
                                         <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
-                        
+
                             </div>
                         </div>
 
@@ -333,7 +475,9 @@
                                 <img src="./images/packages/thailand.jpg" class="card-img-top" alt="...">
                                 <div class="card-body text-center rating-5">
                                     <h5 class="card-title">Thailand</h5>
-                                    <p class="card-text">Golden beaches, lush jungles, and floating markets make Thailand a paradise. Enjoy vibrant nightlife, flavorful cuisine, and scenic temples.
+                                    <p class="card-text">Golden beaches, lush jungles, and floating markets make
+                                        Thailand a paradise. Enjoy vibrant nightlife, flavorful cuisine, and scenic
+                                        temples.
                                     </p>
                                     <div>
                                         <i class="bi bi-star-fill"></i>
@@ -345,7 +489,7 @@
                                     <h6>$1200</h5>
                                         <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
-                        
+
                             </div>
                         </div>
 
@@ -354,7 +498,9 @@
                                 <img src="./images/packages/turkey.jpg" class="card-img-top" alt="...">
                                 <div class="card-body text-center rating-5">
                                     <h5 class="card-title">Turkey</h5>
-                                    <p class="card-text">From Istanbul’s rich culture to Cappadocia’s surreal landscapes, Turkey offers historical wonders, stunning beaches, and delicious cuisine.
+                                    <p class="card-text">From Istanbul’s rich culture to Cappadocia’s surreal
+                                        landscapes, Turkey offers historical wonders, stunning beaches, and delicious
+                                        cuisine.
                                     </p>
                                     <div>
                                         <i class="bi bi-star-fill"></i>
@@ -367,7 +513,7 @@
                                         <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
         </section>
@@ -381,62 +527,88 @@
                     <br>
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                                aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+                                aria-label="Slide 6"></button>
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="4000">
-                                <img src="./images/services/slide-1.jpg" class="d-block w-75 mx-auto" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
+                                <img src="./images/services/slide-1.jpg" class="d-block w-100 mx-auto service-images"
+                                    alt="...">
+                                <div class="carousel-caption d-block">
                                     <h1 class="text-border fs-1">Affordable Hotel</h1>
-                                    <p class="text-border fs-6">Find and book budget-friendly accommodations without compromising on comfort. We offer a wide range of hotels, resorts, and homestays to suit every traveler’s needs.</p>
+                                    <p class="text-border fs-6 d-none d-md-flex">Find and book budget-friendly
+                                        accommodations without compromising on comfort. We offer a wide range of hotels,
+                                        resorts, and homestays to suit every traveler’s needs.</p>
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="4000">
-                                <img src="./images/services/slide-2.jpg" class="d-block w-75 mx-auto" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
+                                <img src="./images/services/slide-2.jpg" class="d-block w-100 mx-auto service-images"
+                                    alt="...">
+                                <div class="carousel-caption d-block">
                                     <h1 class="text-border fs-1">Food and Drinks</h1>
-                                    <p class="text-border fs-6">Discover the best local restaurants, street food, and fine dining experiences. We also provide recommendations for dietary preferences and special cuisines.</p>
+                                    <p class="text-border fs-6 d-none d-md-flex">Discover the best local restaurants,
+                                        street food, and fine dining experiences. We also provide recommendations for
+                                        dietary preferences and special cuisines.</p>
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="4000">
-                                <img src="./images/services/slide-3.jpg" class="d-block w-75 mx-auto" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
+                                <img src="./images/services/slide-3.jpg" class="d-block w-100 mx-auto service-images"
+                                    alt="...">
+                                <div class="carousel-caption d-block">
                                     <h1 class="text-border fs-1">Safety Guide</h1>
-                                    <p class="text-border fs-6">Travel worry-free with our comprehensive safety guides. Get essential travel tips, emergency contacts, and local regulations to ensure a secure journey.</p>
+                                    <p class="text-border fs-6 d-none d-md-flex">Travel worry-free with our
+                                        comprehensive safety guides. Get essential travel tips, emergency contacts, and
+                                        local regulations to ensure a secure journey.</p>
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="4000">
-                                <img src="./images/services/slide-4.jpg" class="d-block w-75 mx-auto" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
+                                <img src="./images/services/slide-4.jpg" class="d-block w-100 mx-auto service-images"
+                                    alt="...">
+                                <div class="carousel-caption d-block">
                                     <h1 class="text-border fs-1">Adventure Activities</h1>
-                                    <p class="text-border fs-6">Make your trip thrilling by booking exciting experiences like scuba diving, trekking, bungee jumping, and safaris. Enjoy curated adventure packages for all levels of enthusiasts.</p>
+                                    <p class="text-border fs-6 d-none d-md-flex">Make your trip thrilling by booking
+                                        exciting experiences like scuba diving, trekking, bungee jumping, and safaris.
+                                        Enjoy curated adventure packages for all levels of enthusiasts.</p>
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="4000">
-                                <img src="./images/services/slide-5.jpg" class="d-block w-75 mx-auto" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
+                                <img src="./images/services/slide-5.jpg" class="d-block w-100 mx-auto service-images"
+                                    alt="...">
+                                <div class="carousel-caption d-block">
                                     <h1 class="text-border fs-1">Local Transportation</h1>
-                                    <p class="text-border fs-6">Navigate your destination easily with our transport solutions. From car rentals and airport transfers to public transport guides, we ensure a seamless travel experience.</p>
+                                    <p class="text-border fs-6 d-none d-md-flex">Navigate your destination easily with
+                                        our transport solutions. From car rentals and airport transfers to public
+                                        transport guides, we ensure a seamless travel experience.</p>
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="4000">
-                                <img src="./images/services/slide-6.jpg" class="d-block w-75 mx-auto" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
+                                <img src="./images/services/slide-6.jpg" class="d-block w-100 mx-auto service-images"
+                                    alt="...">
+                                <div class="carousel-caption d-block">
                                     <h1 class="text-border fs-1">Custom Travel Itineraries</h1>
-                                    <p class="text-border fs-6">Plan your perfect trip with personalized itineraries. Whether you seek cultural experiences, sightseeing, or hidden gems, we design schedules that match your interests and budget.</p>
+                                    <p class="text-border fs-6 d-none d-md-flex">Plan your perfect trip with
+                                        personalized itineraries. Whether you seek cultural experiences, sightseeing, or
+                                        hidden gems, we design schedules that match your interests and budget.</p>
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
@@ -447,13 +619,123 @@
 
         <br><br><br><br>
 
+        <section>
+            <div class="container-fluid">
+                <h1 class="display-4 text-center">Gallery</h1>
+
+                <div class="slick-slider">
+                    <div><img src="./images/gallery/1.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/2.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/3.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/4.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/5.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/6.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/7.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/8.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/9.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/10.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/11.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/12.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/13.jpg" class="img-fluid gallery-images"></div>
+                    <div><img src="./images/gallery/14.jpg" class="img-fluid gallery-images"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <br><br><br>
+
+        <section>
+            <div class="container">
+                <h1 class="display-4 text-center">About Us</h1>
+
+                <div class="row shadow">
+                    <div class="col-md-6 p-0 m-0">
+                        <img src="images/about-us/1.jpg" class="img-fluid h-100">
+                    </div>
+                    <div class="col-md-6 align-items-center px-3">
+                        <p class="mt-2">Welcome to <strong>High Fly</strong>, your trusted travel partner dedicated to
+                            creating unforgettable holiday experiences.</p>
+                        <p>Founded in 2021, <em>High Fly</em> has been committed to providing seamless travel solutions,
+                            offering personalized holiday packages to meet the unique preferences of every traveler.</p>
+                        <p>Our mission is to inspire and empower travelers by curating exceptional journeys, whether
+                            you're seeking a relaxing beach getaway, an adventurous mountain trek, or a cultural city
+                            exploration.</p>
+                        <p>With a team of experienced travel experts and a passion for excellence, we ensure that every
+                            detail of your trip is taken care of — from flights and accommodations to guided tours and
+                            local insights.</p>
+                        <p>At <em>High Fly</em>, we believe that travel is more than just a destination — it’s about
+                            creating lasting memories.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br><br><br><br>
+
     </main>
-    <footer>
-        <!-- <p>&copy; 2023 Your Name. All rights reserved.</p> -->
+    <footer class="bg-light text-dark py-4">
+        <div class="container px-4">
+            <div class="row">
+                <div class="col col-5">
+                    <h3 class="pt-3 fw-bold text-nowrap">High Fly</h3>
+                    <p><i class="bi bi-geo-alt-fill"></i> 101, Sunrise Tower 789 Explorer Avenue Adventure City,
+                        Wanderland 45678</p>
+                    <p><i class="bi bi-telephone-fill"></i> +91 98765-43210</p>
+                    <p class="mb-0"><i class="bi bi-telephone-fill"></i> +91 98765-43211</p>
+                </div>
+                <div class="col col-md-2">
+                    <h4 class="pt-3 fw-bold">Menu</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-dark">Home</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">Book</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">Packages</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">Services</a></li>
+                    </ul>
+                </div>
+                <div class="col col-md-2">
+                    <h4 class="pt-3 fw-bold">More</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-dark">About Us</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">Contacts</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">Career</a></li>
+                    </ul>
+                </div>
+                <div class="col col-md-3 text-end">
+                    <h4 class="pt-3 fw-bold text-nowrap">Social Media</h4>
+                    <!-- <div class="d-flex justify-content-end"> -->
+                    <a href="#" class="text-decoration-none text-dark"><i class="bi bi-instagram fs-2"></i></a>
+                    <a href="#" class="text-decoration-none text-dark"><i class="bi bi-meta fs-2 ms-2"></i></a>
+                    <a href="#" class="text-decoration-none text-dark"><i class="bi bi-google fs-2 ms-2"></i></a>
+                    <a href="#" class="text-decoration-none text-dark"><i class="bi bi-youtube fs-2 ms-2"></i></a>
+                    <a href="#" class="text-decoration-none text-dark"><i class="bi bi-whatsapp fs-2 ms-2"></i></a>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <p>© 2021 High Fly. All Rights Reserved.</p>
+                <div class="d-flex">
+                    <a href="#" class="text-decoration-none text-dark me-4">Terms of use</a>
+                    <a href="#" class="text-decoration-none text-dark">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"
+        integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj+KsslFkCOt3TvJrX2AV/Gc3wOqA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.5.2/jquery-migrate.min.js"
+        integrity="sha512-BzvgYEoHXuphX+g7B/laemJGYFdrq4fTKEo+B3PurSxstMZtwu28FHkPKXu6dSBCzbUWqz/rMv755nUwhjQypw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-</body>
+    <script src="./scripts.js"></script>
 
+</body>
 </html>
